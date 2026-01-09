@@ -87,6 +87,7 @@
                     <span style="color: #ffcc00; margin-left: 0.5rem;">● Elevated</span>
                     <span style="color: #ff4444; margin-left: 0.5rem;">● High</span>
                     <span style="color: #ff6600; margin-left: 0.5rem;">▲ Weather</span>
+                    <span style="color: #ff8800; margin-left: 0.5rem;">◉ Quake</span>
                 </span>
             </div>
             <div class="panel-content" id="mapPanel" style="max-height: none; height: 550px; overflow: hidden; background: #0a1a14; position: relative;">
@@ -312,6 +313,76 @@
                             console.log(`Loaded ${Object.keys(alertsByState).length} weather alert regions`);
                         } catch(weatherErr) {
                             console.log('Weather alerts unavailable:', weatherErr.message);
+                        }
+
+                        // Fetch and render global earthquakes (USGS API)
+                        try {
+                            const quakeRes = await fetch('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson');
+                            const quakeData = await quakeRes.json();
+
+                            // Earthquake magnitude colors
+                            const getQuakeColor = (mag) => {
+                                if (mag >= 7) return '#ff0000';
+                                if (mag >= 6) return '#ff4400';
+                                if (mag >= 5) return '#ff8800';
+                                return '#ffaa00';
+                            };
+
+                            // Draw earthquakes as concentric circles
+                            quakeData.features?.slice(0, 30).forEach(quake => {
+                                const coords = quake.geometry.coordinates;
+                                const props = quake.properties;
+                                const [x, y] = projection([coords[0], coords[1]]);
+                                const mag = props.mag;
+                                const color = getQuakeColor(mag);
+                                const radius = Math.max(3, mag - 2);
+
+                                if (x && y) {
+                                    // Outer ring
+                                    svg.append('circle')
+                                        .attr('cx', x).attr('cy', y)
+                                        .attr('r', radius + 3)
+                                        .attr('fill', 'none')
+                                        .attr('stroke', color)
+                                        .attr('stroke-width', 1)
+                                        .attr('opacity', 0.4);
+
+                                    // Inner circle
+                                    svg.append('circle')
+                                        .attr('cx', x).attr('cy', y)
+                                        .attr('r', radius)
+                                        .attr('fill', color)
+                                        .attr('opacity', 0.7);
+
+                                    // Hit area for tooltip
+                                    svg.append('circle')
+                                        .attr('cx', x).attr('cy', y)
+                                        .attr('r', 10)
+                                        .attr('fill', 'transparent')
+                                        .attr('class', 'hotspot-hit')
+                                        .on('mouseenter', function(event) {
+                                            const rect = mapPanel.getBoundingClientRect();
+                                            const time = new Date(props.time).toLocaleString();
+                                            const depth = coords[2].toFixed(1);
+                                            tooltip.innerHTML = `<strong style="color:${color}">M${mag.toFixed(1)} Earthquake</strong><br>${props.place}<br><span style="opacity:0.7">Depth: ${depth}km • ${time}</span>`;
+                                            tooltip.style.display = 'block';
+                                            tooltip.style.left = (event.clientX - rect.left + 15) + 'px';
+                                            tooltip.style.top = (event.clientY - rect.top - 10) + 'px';
+                                        })
+                                        .on('mousemove', function(event) {
+                                            const rect = mapPanel.getBoundingClientRect();
+                                            tooltip.style.left = (event.clientX - rect.left + 15) + 'px';
+                                            tooltip.style.top = (event.clientY - rect.top - 10) + 'px';
+                                        })
+                                        .on('mouseleave', function() {
+                                            tooltip.style.display = 'none';
+                                        });
+                                }
+                            });
+
+                            console.log(`Loaded ${Math.min(quakeData.features?.length || 0, 30)} earthquakes`);
+                        } catch(quakeErr) {
+                            console.log('Earthquake data unavailable:', quakeErr.message);
                         }
 
                     } catch(e) {
