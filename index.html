@@ -132,22 +132,38 @@
                 <svg id="mapSvg" style="width:100%;height:100%;"></svg>
                 <div id="mapTooltip" style="position:absolute;display:none;background:rgba(0,20,15,0.95);border:1px solid #00ff88;padding:10px 14px;border-radius:4px;font-size:11px;color:#00ff88;pointer-events:none;z-index:1000;max-width:280px;font-family:monospace;line-height:1.4;"></div>
                 <!-- Enhanced Iran Popup -->
-                <div id="iranPopup" style="position:absolute;display:none;background:rgba(10,15,12,0.98);border:1px solid #ff4444;padding:0;border-radius:6px;font-size:11px;color:#e0e0e0;z-index:1001;width:380px;font-family:monospace;box-shadow:0 4px 20px rgba(0,0,0,0.5);overflow:hidden;">
-                    <div style="background:linear-gradient(90deg,#3a1515,#2a1010);padding:12px 15px;border-bottom:1px solid #4a2020;">
+                <div id="iranPopup" style="position:absolute;display:none;background:rgba(10,15,12,0.98);border:1px solid #ff4444;padding:0;border-radius:6px;font-size:11px;color:#e0e0e0;z-index:1001;width:420px;font-family:monospace;box-shadow:0 4px 20px rgba(0,0,0,0.5);overflow:hidden;max-height:90vh;overflow-y:auto;">
+                    <div style="background:linear-gradient(90deg,#5a1515,#3a1010);padding:12px 15px;border-bottom:1px solid #4a2020;">
                         <div style="display:flex;justify-content:space-between;align-items:center;">
-                            <span style="color:#ff4444;font-weight:bold;font-size:13px;">☢ IRAN SITUATION</span>
-                            <span style="background:#ff4444;color:#000;padding:2px 8px;border-radius:3px;font-size:9px;font-weight:bold;">HIGH THREAT</span>
+                            <span style="color:#ff4444;font-weight:bold;font-size:13px;">🔥 IRAN CRISIS</span>
+                            <span style="background:#ff0000;color:#fff;padding:2px 8px;border-radius:3px;font-size:9px;font-weight:bold;animation:blink 1s infinite;">ACTIVE UPRISING</span>
                         </div>
-                        <div style="color:#888;font-size:9px;margin-top:4px;">Nuclear program • Regional proxy network • Sanctions regime</div>
+                        <div style="color:#ff8888;font-size:9px;margin-top:4px;">Mass protests • Regime instability • Nuclear program</div>
+                    </div>
+                    <!-- Current Protests Section -->
+                    <div style="background:#2a1515;padding:12px 15px;border-bottom:1px solid #3a2020;">
+                        <div style="color:#ff6666;font-size:9px;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">⚠️ Ongoing Revolution (Dec 2025–)</div>
+                        <div style="font-size:10px;line-height:1.5;">
+                            <div style="margin-bottom:6px;"><span style="color:#ff8888;">Status:</span> Largest uprising since 1979 Revolution</div>
+                            <div style="margin-bottom:6px;"><span style="color:#ff8888;">Scope:</span> 200+ cities across 26 provinces</div>
+                            <div style="margin-bottom:6px;"><span style="color:#ff8888;">Trigger:</span> Economic collapse, 52%+ inflation, currency crash</div>
+                            <div style="margin-bottom:6px;"><span style="color:#ff8888;">Internet:</span> <span style="color:#ffaa00;">Heavily restricted/cut</span></div>
+                            <div style="margin-bottom:6px;"><span style="color:#ff8888;">Slogans:</span> "Woman, Life, Freedom" + monarchist calls</div>
+                        </div>
+                        <div style="font-size:9px;color:#888;margin-top:8px;padding-top:8px;border-top:1px solid #3a2020;">
+                            ▸ "Tehran's Tank Man" - viral protest symbol<br>
+                            ▸ Cities Abdanan & Malekshahi abandoned by security forces<br>
+                            ▸ Regime deploying Hezbollah/Iraqi militias internally
+                        </div>
                     </div>
                     <div style="display:flex;">
                         <div style="flex:1;padding:12px 15px;border-right:1px solid #2a2020;">
-                            <div style="color:#ff6666;font-size:9px;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Key Entities</div>
+                            <div style="color:#ff6666;font-size:9px;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Regime Forces</div>
                             <div style="font-size:10px;line-height:1.6;">
-                                <div>🔴 <span style="color:#ff8888;">IRGC</span> — Revolutionary Guard Corps</div>
-                                <div>🔴 <span style="color:#ff8888;">Quds Force</span> — External operations</div>
+                                <div>🔴 <span style="color:#ff8888;">IRGC</span> — Revolutionary Guard</div>
+                                <div>🔴 <span style="color:#ff8888;">Basij</span> — Paramilitary militia</div>
                                 <div>🔴 <span style="color:#ff8888;">MOIS</span> — Intelligence ministry</div>
-                                <div>🔴 <span style="color:#ff8888;">AEOI</span> — Atomic Energy Org</div>
+                                <div>🔴 <span style="color:#ffaa00;">+850 foreign fighters</span></div>
                             </div>
                             <div style="color:#ff6666;font-size:9px;text-transform:uppercase;letter-spacing:1px;margin:12px 0 8px;">Proxy Network</div>
                             <div style="font-size:10px;line-height:1.6;">
@@ -159,9 +175,9 @@
                         </div>
                         <div style="flex:1;padding:12px 15px;">
                             <div style="color:#ff6666;font-size:9px;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Nuclear Status</div>
-                            <div id="iranNuclearStatus" style="font-size:10px;line-height:1.5;margin-bottom:12px;">
-                                <div>Enrichment: <span style="color:#ffaa00;">60%+ (weapons-grade threshold)</span></div>
-                                <div>Breakout time: <span style="color:#ff6666;">~2 weeks estimated</span></div>
+                            <div style="font-size:10px;line-height:1.5;margin-bottom:12px;">
+                                <div>Enrichment: <span style="color:#ffaa00;">60%+</span></div>
+                                <div>Breakout: <span style="color:#ff6666;">~2 weeks</span></div>
                                 <div>Sites: Natanz, Fordow, Arak</div>
                             </div>
                             <div style="color:#ff6666;font-size:9px;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Live Intel</div>
@@ -173,6 +189,9 @@
                         <div id="iranNewsSection" style="font-size:10px;color:#ccc;line-height:1.5;">Loading news...</div>
                     </div>
                 </div>
+                <style>
+                    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+                </style>
                 <div class="map-zoom-controls" id="mapZoomControls">
                     <button class="map-zoom-btn" id="zoomInBtn">+</button>
                     <button class="map-zoom-btn" id="zoomOutBtn">−</button>
@@ -359,9 +378,9 @@
                             liveDataEl.innerHTML = 'Error loading data';
                         }
 
-                        // Fetch Iran news from GDELT
+                        // Fetch Iran news from GDELT - prioritize protest/uprising news
                         try {
-                            const newsRes = await fetch('https://api.gdeltproject.org/api/v2/doc/doc?query=iran (nuclear OR irgc OR sanctions OR tehran)&mode=artlist&maxrecords=5&format=json&sort=date');
+                            const newsRes = await fetch('https://api.gdeltproject.org/api/v2/doc/doc?query=iran (protest OR uprising OR revolution OR crackdown OR nuclear OR irgc OR sanctions)&mode=artlist&maxrecords=6&format=json&sort=date');
                             const newsData = await newsRes.json();
                             if (newsData.articles && newsData.articles.length > 0) {
                                 newsEl.innerHTML = newsData.articles.slice(0, 4).map(a =>

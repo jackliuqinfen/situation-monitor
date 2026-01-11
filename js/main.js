@@ -200,7 +200,7 @@ async function refreshAll() {
             isPanelEnabled('layoffs') ? fetchLayoffs() : Promise.resolve([]),
             isPanelEnabled('venezuela') ? fetchSituationNews('venezuela maduro caracas crisis') : Promise.resolve([]),
             isPanelEnabled('greenland') ? fetchSituationNews('greenland denmark trump arctic') : Promise.resolve([]),
-            isPanelEnabled('iran') ? fetchSituationNews('iran tehran nuclear irgc sanctions') : Promise.resolve([]),
+            isPanelEnabled('iran') ? fetchSituationNews('iran (protest OR uprising OR revolution OR nuclear OR irgc OR sanctions)') : Promise.resolve([]),
             isPanelEnabled('intel') ? fetchIntelFeed() : Promise.resolve([])
         ]);
 
@@ -238,9 +238,9 @@ async function refreshAll() {
     }
     if (isPanelEnabled('iran')) {
         renderSituation('iranPanel', 'iranStatus', iranNews, {
-            title: 'Iran Situation',
-            subtitle: 'Nuclear program, regional tensions & sanctions',
-            criticalKeywords: ['nuclear', 'strike', 'attack', 'irgc', 'enrichment', 'missile', 'sanctions', 'proxy']
+            title: 'Iran Crisis',
+            subtitle: 'Revolution protests, regime instability & nuclear program',
+            criticalKeywords: ['protest', 'uprising', 'revolution', 'crackdown', 'killed', 'shot', 'nuclear', 'strike', 'attack', 'irgc', 'khamenei']
         });
     }
 
