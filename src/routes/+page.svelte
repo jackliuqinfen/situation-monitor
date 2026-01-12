@@ -164,10 +164,17 @@
 			onboardingOpen = true;
 		}
 
-		loadNews();
-		loadMarkets();
-		loadMiscData();
-		loadWorldLeaders();
+		// Load initial data and track as refresh
+		async function initialLoad() {
+			refresh.startRefresh();
+			try {
+				await Promise.all([loadNews(), loadMarkets(), loadMiscData(), loadWorldLeaders()]);
+				refresh.endRefresh();
+			} catch (error) {
+				refresh.endRefresh([String(error)]);
+			}
+		}
+		initialLoad();
 		refresh.setupAutoRefresh(handleRefresh);
 
 		return () => {
