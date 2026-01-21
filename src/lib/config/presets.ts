@@ -62,6 +62,38 @@ export const PRESETS: Record<string, Preset> = {
 		description: '深度分析、模式检测与叙事追踪',
 		panels: ['map', 'intel', 'leaders', 'correlation', 'narrative', 'mainchar', 'politics']
 	},
+	'ai-influencer': {
+		id: 'ai-influencer',
+		name: 'AI 领域博主',
+		icon: '🤖',
+		description: '追踪 AI 趋势、科技新闻、裁员动态及核心人物',
+		panels: [
+			'ai',
+			'tech',
+			'mainchar',
+			'layoffs',
+			'narrative',
+			'polymarket',
+			'heatmap',
+			'monitors'
+		]
+	},
+	'fund-investor': {
+		id: 'fund-investor',
+		name: '基金股票投资者',
+		icon: '📊',
+		description: '宏观经济、美联储政策、市场行情及相关性分析',
+		panels: [
+			'markets',
+			'heatmap',
+			'finance',
+			'fed',
+			'commodities',
+			'printer',
+			'correlation',
+			'gov'
+		]
+	},
 	minimal: {
 		id: 'minimal',
 		name: '极简模式',
@@ -108,6 +140,8 @@ export const PRESET_ORDER = [
 	'trader',
 	'geopolitics',
 	'intel',
+	'ai-influencer',
+	'fund-investor',
 	'minimal',
 	'everything'
 ];

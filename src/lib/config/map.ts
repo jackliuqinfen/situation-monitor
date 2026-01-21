@@ -183,7 +183,7 @@ export const HOTSPOTS: Hotspot[] = [
 
 export const CONFLICT_ZONES: ConflictZone[] = [
 	{
-		name: 'Ukraine',
+		name: '乌克兰',
 		coords: [
 			[30, 52],
 			[40, 52],
@@ -194,7 +194,7 @@ export const CONFLICT_ZONES: ConflictZone[] = [
 		color: '#ff4444'
 	},
 	{
-		name: 'Gaza',
+		name: '加沙',
 		coords: [
 			[34, 32],
 			[35, 32],
@@ -205,7 +205,7 @@ export const CONFLICT_ZONES: ConflictZone[] = [
 		color: '#ff4444'
 	},
 	{
-		name: 'Taiwan Strait',
+		name: '台湾海峡',
 		coords: [
 			[117, 28],
 			[122, 28],
@@ -216,7 +216,7 @@ export const CONFLICT_ZONES: ConflictZone[] = [
 		color: '#ffaa00'
 	},
 	{
-		name: 'Yemen',
+		name: '也门',
 		coords: [
 			[42, 19],
 			[54, 19],
@@ -227,7 +227,7 @@ export const CONFLICT_ZONES: ConflictZone[] = [
 		color: '#ff6644'
 	},
 	{
-		name: 'Sudan',
+		name: '苏丹',
 		coords: [
 			[22, 23],
 			[38, 23],
@@ -238,7 +238,7 @@ export const CONFLICT_ZONES: ConflictZone[] = [
 		color: '#ff6644'
 	},
 	{
-		name: 'Myanmar',
+		name: '缅甸',
 		coords: [
 			[92, 28],
 			[101, 28],
@@ -252,38 +252,38 @@ export const CONFLICT_ZONES: ConflictZone[] = [
 
 export const CHOKEPOINTS: Chokepoint[] = [
 	{
-		name: 'Suez',
+		name: '苏伊士',
 		lat: 30.0,
 		lon: 32.5,
 		desc: '苏伊士运河 — 12%全球贸易，欧亚航线'
 	},
 	{
-		name: 'Panama',
+		name: '巴拿马',
 		lat: 9.1,
 		lon: -79.7,
 		desc: '巴拿马运河 — 美洲过境，太平洋-大西洋通道'
 	},
 	{
-		name: 'Hormuz',
+		name: '霍尔木兹',
 		lat: 26.5,
 		lon: 56.5,
 		desc: '霍尔木兹海峡 — 21%全球石油，波斯湾出口'
 	},
 	{
-		name: 'Malacca',
+		name: '马六甲',
 		lat: 2.5,
 		lon: 101.0,
 		desc: '马六甲海峡 — 25%全球贸易，中国补给线'
 	},
 	{
-		name: 'Bab el-M',
+		name: '曼德',
 		lat: 12.5,
 		lon: 43.3,
 		desc: '曼德海峡 — 红海门户，胡塞武装威胁区'
 	},
-	{ name: 'Gibraltar', lat: 36.0, lon: -5.5, desc: '直布罗陀海峡 — 地中海入口' },
+	{ name: '直布罗陀', lat: 36.0, lon: -5.5, desc: '直布罗陀海峡 — 地中海入口' },
 	{
-		name: 'Bosporus',
+		name: '博斯普鲁斯',
 		lat: 41.1,
 		lon: 29.0,
 		desc: '博斯普鲁斯海峡 — 黑海入口，俄罗斯出口'
@@ -291,64 +291,64 @@ export const CHOKEPOINTS: Chokepoint[] = [
 ];
 
 export const CABLE_LANDINGS: CableLanding[] = [
-	{ name: 'NYC', lat: 40.7, lon: -74.0, desc: '纽约 — 跨大西洋枢纽，10+条光缆' },
-	{ name: 'Cornwall', lat: 50.1, lon: -5.5, desc: '英国康沃尔 — 欧美门户' },
-	{ name: 'Marseille', lat: 43.3, lon: 5.4, desc: '马赛 — 地中海枢纽，SEA-ME-WE' },
-	{ name: 'Mumbai', lat: 19.1, lon: 72.9, desc: '孟买 — 印度门户，10+条光缆' },
-	{ name: 'Singapore', lat: 1.3, lon: 103.8, desc: '新加坡 — 亚太枢纽' },
-	{ name: 'Hong Kong', lat: 22.3, lon: 114.2, desc: '香港 — 中国连接枢纽' },
-	{ name: 'Tokyo', lat: 35.5, lon: 139.8, desc: '东京 — 跨太平洋终点' },
-	{ name: 'Sydney', lat: -33.9, lon: 151.2, desc: '悉尼 — 澳洲/太平洋枢纽' },
-	{ name: 'LA', lat: 33.7, lon: -118.2, desc: '洛杉矶 — 太平洋门户' },
-	{ name: 'Miami', lat: 25.8, lon: -80.2, desc: '迈阿密 — 美洲/加勒比枢纽' }
+	{ name: '纽约', lat: 40.7, lon: -74.0, desc: '纽约 — 跨大西洋枢纽，10+条光缆' },
+	{ name: '康沃尔', lat: 50.1, lon: -5.5, desc: '英国康沃尔 — 欧美门户' },
+	{ name: '马赛', lat: 43.3, lon: 5.4, desc: '马赛 — 地中海枢纽，SEA-ME-WE' },
+	{ name: '孟买', lat: 19.1, lon: 72.9, desc: '孟买 — 印度门户，10+条光缆' },
+	{ name: '新加坡', lat: 1.3, lon: 103.8, desc: '新加坡 — 亚太枢纽' },
+	{ name: '香港', lat: 22.3, lon: 114.2, desc: '香港 — 中国连接枢纽' },
+	{ name: '东京', lat: 35.5, lon: 139.8, desc: '东京 — 跨太平洋终点' },
+	{ name: '悉尼', lat: -33.9, lon: 151.2, desc: '悉尼 — 澳洲/太平洋枢纽' },
+	{ name: '洛杉矶', lat: 33.7, lon: -118.2, desc: '洛杉矶 — 太平洋门户' },
+	{ name: '迈阿密', lat: 25.8, lon: -80.2, desc: '迈阿密 — 美洲/加勒比枢纽' }
 ];
 
 export const NUCLEAR_SITES: NuclearSite[] = [
-	{ name: 'Natanz', lat: 33.7, lon: 51.7, desc: '纳坦兹 — 伊朗铀浓缩' },
-	{ name: 'Yongbyon', lat: 39.8, lon: 125.8, desc: '宁边 — 朝鲜核设施' },
-	{ name: 'Dimona', lat: 31.0, lon: 35.1, desc: '迪莫纳 — 以色列核设施' },
-	{ name: 'Bushehr', lat: 28.8, lon: 50.9, desc: '布什尔 — 伊朗核电站' },
+	{ name: '纳坦兹', lat: 33.7, lon: 51.7, desc: '纳坦兹 — 伊朗铀浓缩' },
+	{ name: '宁边', lat: 39.8, lon: 125.8, desc: '宁边 — 朝鲜核设施' },
+	{ name: '迪莫纳', lat: 31.0, lon: 35.1, desc: '迪莫纳 — 以色列核设施' },
+	{ name: '布什尔', lat: 28.8, lon: 50.9, desc: '布什尔 — 伊朗核电站' },
 	{
-		name: 'Zaporizhzhia',
+		name: '扎波罗热',
 		lat: 47.5,
 		lon: 34.6,
 		desc: '扎波罗热 — 欧洲最大核电站，冲突区'
 	},
-	{ name: 'Chernobyl', lat: 51.4, lon: 30.1, desc: '切尔诺贝利 — 禁区，2022年曾被占领' },
-	{ name: 'Fukushima', lat: 37.4, lon: 141.0, desc: '福岛 — 退役场址' }
+	{ name: '切尔诺贝利', lat: 51.4, lon: 30.1, desc: '切尔诺贝利 — 禁区，2022年曾被占领' },
+	{ name: '福岛', lat: 37.4, lon: 141.0, desc: '福岛 — 退役场址' }
 ];
 
 export const MILITARY_BASES: MilitaryBase[] = [
-	{ name: 'Ramstein', lat: 49.4, lon: 7.6, desc: '拉姆施泰因 — 美国空军，北约德国枢纽' },
+	{ name: '拉姆施泰因', lat: 49.4, lon: 7.6, desc: '拉姆施泰因 — 美国空军，北约德国枢纽' },
 	{
-		name: 'Diego Garcia',
+		name: '迪戈加西亚',
 		lat: -7.3,
 		lon: 72.4,
 		desc: '迪戈加西亚 — 美英印度洋基地'
 	},
 	{
-		name: 'Okinawa',
+		name: '冲绳',
 		lat: 26.5,
 		lon: 127.9,
 		desc: '冲绳 — 驻日美军，太平洋存在'
 	},
-	{ name: 'Guam', lat: 13.5, lon: 144.8, desc: '关岛 — 美国印太司令部，轰炸机基地' },
+	{ name: '关岛', lat: 13.5, lon: 144.8, desc: '关岛 — 美国印太司令部，轰炸机基地' },
 	{
-		name: 'Djibouti',
+		name: '吉布提',
 		lat: 11.5,
 		lon: 43.1,
 		desc: '吉布提 — 美/中/法基地，非洲之角'
 	},
-	{ name: 'Qatar', lat: 25.1, lon: 51.3, desc: '乌代德 — 美国中央司令部前沿指挥部' },
+	{ name: '乌代德', lat: 25.1, lon: 51.3, desc: '乌代德 — 美国中央司令部前沿指挥部' },
 	{
-		name: 'Kaliningrad',
+		name: '加里宁格勒',
 		lat: 54.7,
 		lon: 20.5,
 		desc: '加里宁格勒 — 俄罗斯波罗的海飞地，导弹'
 	},
-	{ name: 'Sevastopol', lat: 44.6, lon: 33.5, desc: '塞瓦斯托波尔 — 俄罗斯黑海舰队' },
+	{ name: '塞瓦斯托波尔', lat: 44.6, lon: 33.5, desc: '塞瓦斯托波尔 — 俄罗斯黑海舰队' },
 	{
-		name: 'Hainan',
+		name: '海南',
 		lat: 18.2,
 		lon: 109.5,
 		desc: '海南 — 中国潜艇基地，南海'

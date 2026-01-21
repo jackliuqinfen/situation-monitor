@@ -609,122 +609,160 @@
 </Panel>
 
 <style>
+	/* AWWWARDS Style Map Theme */
 	.map-container {
 		position: relative;
 		width: 100%;
 		aspect-ratio: 2 / 1;
-		background: #0a0f0d;
-		border-radius: 4px;
+		/* Deep Space / Tactical Background */
+		background: radial-gradient(circle at 50% 50%, #1a1f2e 0%, #0a0c10 100%);
+		border-radius: var(--radius);
 		overflow: hidden;
+		box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
 	}
 
 	.map-svg {
 		width: 100%;
 		height: 100%;
+		/* Slight glow for the whole map */
+		filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.1));
 	}
 
+	/* Glassmorphism Tooltip */
 	.map-tooltip {
 		position: absolute;
-		background: rgba(10, 10, 10, 0.95);
-		border: 1px solid #333;
-		border-radius: 4px;
-		padding: 0.5rem;
-		font-size: 0.65rem;
-		color: #ddd;
-		max-width: 250px;
+		background: rgba(18, 18, 20, 0.75);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+		border-radius: 8px;
+		padding: 0.75rem;
+		font-size: 0.7rem;
+		color: var(--text-primary);
+		max-width: 260px;
 		pointer-events: none;
 		z-index: 100;
+		transition: opacity 0.2s ease;
+	}
+
+	.map-tooltip strong {
+		display: block;
+		font-size: 0.75rem;
+		margin-bottom: 0.4rem;
+		letter-spacing: 0.02em;
 	}
 
 	.tooltip-line {
-		opacity: 0.7;
+		color: var(--text-secondary);
+		display: block;
+		margin-top: 0.2rem;
+		line-height: 1.4;
 	}
 
+	/* Controls & Legend */
 	.zoom-controls {
 		position: absolute;
-		bottom: 0.5rem;
-		right: 0.5rem;
+		bottom: 1rem;
+		right: 1rem;
 		display: flex;
 		flex-direction: column;
-		gap: 0.25rem;
+		gap: 0.5rem;
 	}
 
 	.zoom-btn {
-		width: 2.75rem;
-		height: 2.75rem;
+		width: 2.25rem;
+		height: 2.25rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background: rgba(20, 20, 20, 0.9);
-		border: 1px solid #333;
-		border-radius: 4px;
-		color: #aaa;
-		font-size: 1rem;
+		background: rgba(30, 30, 35, 0.8);
+		backdrop-filter: blur(8px);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		border-radius: 6px;
+		color: var(--text-secondary);
+		font-size: 1.1rem;
 		cursor: pointer;
+		transition: all 0.2s ease;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 	}
 
 	.zoom-btn:hover {
-		background: rgba(40, 40, 40, 0.9);
-		color: #fff;
+		background: rgba(255, 255, 255, 0.1);
+		color: var(--text-primary);
+		border-color: rgba(255, 255, 255, 0.2);
+		transform: translateY(-1px);
 	}
 
 	.map-legend {
 		position: absolute;
-		top: 0.5rem;
-		right: 0.5rem;
+		top: 1rem;
+		right: 1rem;
 		display: flex;
 		flex-direction: column;
-		gap: 0.2rem;
-		background: rgba(10, 10, 10, 0.8);
-		padding: 0.3rem 0.5rem;
-		border-radius: 4px;
-		font-size: 0.55rem;
+		gap: 0.4rem;
+		background: rgba(15, 15, 20, 0.7);
+		backdrop-filter: blur(8px);
+		padding: 0.6rem 0.8rem;
+		border-radius: 6px;
+		border: 1px solid rgba(255, 255, 255, 0.05);
+		font-size: 0.65rem;
 	}
 
 	.legend-item {
 		display: flex;
 		align-items: center;
-		gap: 0.3rem;
-		color: #888;
+		gap: 0.4rem;
+		color: var(--text-secondary);
+		font-family: var(--font-mono);
 	}
 
 	.legend-dot {
-		width: 8px;
-		height: 8px;
+		width: 6px;
+		height: 6px;
 		border-radius: 50%;
+		box-shadow: 0 0 6px currentColor;
 	}
 
 	.legend-dot.high {
-		background: #ff4444;
+		background: var(--danger);
+		color: rgba(239, 68, 68, 0.6);
 	}
 
 	.legend-dot.elevated {
-		background: #ffcc00;
+		background: var(--warning);
+		color: rgba(245, 158, 11, 0.6);
 	}
 
 	.legend-dot.low {
-		background: #00ff88;
+		background: var(--success);
+		color: rgba(16, 185, 129, 0.6);
 	}
 
 	/* Pulse animation for hotspots */
 	:global(.pulse) {
-		animation: pulse 2s ease-in-out infinite;
+		animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+		transform-origin: center;
+		transform-box: fill-box;
 	}
 
 	@keyframes pulse {
 		0%,
 		100% {
 			r: 6;
-			opacity: 0.3;
+			opacity: 0.4;
+			stroke-width: 0;
 		}
 		50% {
-			r: 10;
+			r: 14;
 			opacity: 0.1;
+			stroke-width: 0.5;
 		}
 	}
 
 	:global(.hotspot-hit) {
 		cursor: pointer;
+		fill: transparent;
 	}
 
 	/* Hide zoom controls on mobile where touch zoom is available */

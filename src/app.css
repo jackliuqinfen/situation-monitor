@@ -4,60 +4,93 @@
 
 /* CSS Custom Properties for theming */
 :root {
-	--bg: #0a0a0a;
-	--surface: #141414;
-	--surface-hover: #1a1a1a;
-	--border: #2a2a2a;
-	--border-light: #3a3a3a;
-	--text: #e8e8e8;
-	--text-dim: #888;
-	--text-muted: #666;
-	--accent: #fff;
-	--red: #ff4444;
-	--green: #44ff88;
-	--yellow: #ffaa00;
-	--blue: #4488ff;
+	/* Colors - Dark Theme */
+	--bg: #09090b;
+	--surface: #121214;
+	--surface-hover: #1c1c1f;
+	--surface-active: #27272a;
+	
+	--border: #27272a;
+	--border-light: #3f3f46;
+	--border-hover: #52525b;
+
+	--text: #e4e4e7;
+	--text-primary: #f4f4f5;
+	--text-secondary: #a1a1aa;
+	--text-muted: #71717a;
+	--text-dim: #52525b;
+
+	/* Semantic Colors */
+	--accent: #3b82f6; /* Blue-500 */
+	--accent-rgb: 59, 130, 246;
+	--accent-hover: #2563eb;
+	
+	--danger: #ef4444;
+	--danger-hover: #dc2626;
+	--warning: #f59e0b;
+	--success: #10b981;
+	--info: #06b6d4;
+
+	/* Typography */
+	--font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+	--font-mono: 'JetBrains Mono', 'SF Mono', Monaco, Consolas, 'Fira Code', monospace;
+
+	/* Effects */
+	--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	--shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+	--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+	--radius: 6px;
 }
 
 /* Base styles */
 html {
-	font-family: 'SF Mono', Monaco, Inconsolata, 'Fira Code', monospace;
+	font-family: var(--font-sans);
 	background-color: var(--bg);
 	color: var(--text);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 body {
 	margin: 0;
 	min-height: 100vh;
+	font-size: 14px;
+	line-height: 1.5;
 }
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
-	width: 6px;
-	height: 6px;
+	width: 5px;
+	height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-	background: var(--surface);
+	background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: var(--border-light);
-	border-radius: 3px;
+	background: var(--border);
+	border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: var(--text-muted);
+	background: var(--border-light);
 }
 
 /* Link styles */
 a {
 	color: inherit;
 	text-decoration: none;
+	transition: color 0.2s;
 }
 
 a:hover {
-	text-decoration: underline;
+	color: var(--accent);
+}
+
+/* Utility classes */
+.font-mono {
+	font-family: var(--font-mono);
 }
 
 /* Focus styles for accessibility */
