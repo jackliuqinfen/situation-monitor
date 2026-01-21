@@ -28,9 +28,9 @@
 	}
 </script>
 
-<Panel id="polymarket" title="Polymarket" {count} {loading} {error}>
+<Panel id="polymarket" title="预测市场" {count} {loading} {error}>
 	{#if predictions.length === 0 && !loading && !error}
-		<div class="empty-state">No predictions available</div>
+		<div class="empty-state">暂无预测数据</div>
 	{:else}
 		<div class="predictions-list">
 			{#each predictions as pred (pred.id)}
