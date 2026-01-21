@@ -89,7 +89,7 @@ function parseValue(obs: FredObservation | undefined): number | null {
  */
 async function fetchFedFundsRate(): Promise<EconomicIndicator> {
 	const seriesId = 'FEDFUNDS';
-	const name = 'Fed Funds Rate';
+	const name = '联邦基金利率';
 	const unit = '%';
 
 	if (!isFredConfigured()) {
@@ -117,7 +117,7 @@ async function fetchFedFundsRate(): Promise<EconomicIndicator> {
  */
 async function fetchCPI(): Promise<EconomicIndicator> {
 	const seriesId = 'CPIAUCSL';
-	const name = 'CPI Inflation';
+	const name = 'CPI 通胀';
 	const unit = '%';
 
 	if (!isFredConfigured()) {
@@ -176,7 +176,7 @@ async function fetchCPI(): Promise<EconomicIndicator> {
  */
 async function fetchTreasury10Y(): Promise<EconomicIndicator> {
 	const seriesId = 'DGS10';
-	const name = '10Y Treasury';
+	const name = '10年期国债';
 	const unit = '%';
 
 	if (!isFredConfigured()) {
@@ -224,11 +224,11 @@ const FED_BASE_URL = 'https://www.federalreserve.gov';
  * Fed RSS feed configuration
  */
 const FED_RSS_FEEDS = [
-	{ url: `${FED_BASE_URL}/feeds/press_monetary.xml`, type: 'monetary', label: 'Monetary Policy' },
-	{ url: `${FED_BASE_URL}/feeds/s_t_powell.xml`, type: 'powell', label: 'Chair Powell' },
-	{ url: `${FED_BASE_URL}/feeds/speeches.xml`, type: 'speech', label: 'Speeches' },
-	{ url: `${FED_BASE_URL}/feeds/testimony.xml`, type: 'testimony', label: 'Testimony' },
-	{ url: `${FED_BASE_URL}/feeds/press_other.xml`, type: 'announcement', label: 'Announcements' }
+	{ url: `${FED_BASE_URL}/feeds/press_monetary.xml`, type: 'monetary', label: '货币政策' },
+	{ url: `${FED_BASE_URL}/feeds/s_t_powell.xml`, type: 'powell', label: '鲍威尔主席' },
+	{ url: `${FED_BASE_URL}/feeds/speeches.xml`, type: 'speech', label: '演讲' },
+	{ url: `${FED_BASE_URL}/feeds/testimony.xml`, type: 'testimony', label: '证词' },
+	{ url: `${FED_BASE_URL}/feeds/press_other.xml`, type: 'announcement', label: '公告' }
 ] as const;
 
 export type FedNewsType = (typeof FED_RSS_FEEDS)[number]['type'];

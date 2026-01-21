@@ -335,14 +335,16 @@
 					<SituationPanel
 						panelId="venezuela"
 						config={{
-							title: 'Venezuela Watch',
-							subtitle: 'Humanitarian crisis monitoring',
-							criticalKeywords: ['maduro', 'caracas', 'venezuela', 'guaido']
+							title: '委内瑞拉观察',
+							subtitle: '人道主义危机监控',
+							criticalKeywords: ['maduro', 'caracas', 'venezuela', 'guaido', '马杜罗', '加拉加斯', '委内瑞拉', '瓜伊多']
 						}}
 						news={$allNewsItems.filter(
 							(n) =>
 								n.title.toLowerCase().includes('venezuela') ||
-								n.title.toLowerCase().includes('maduro')
+								n.title.toLowerCase().includes('maduro') ||
+								n.title.includes('委内瑞拉') ||
+								n.title.includes('马杜罗')
 						)}
 					/>
 				</div>
@@ -353,14 +355,16 @@
 					<SituationPanel
 						panelId="greenland"
 						config={{
-							title: 'Greenland Watch',
-							subtitle: 'Arctic geopolitics monitoring',
-							criticalKeywords: ['greenland', 'arctic', 'nuuk', 'denmark']
+							title: '格陵兰观察',
+							subtitle: '北极地缘政治监控',
+							criticalKeywords: ['greenland', 'arctic', 'nuuk', 'denmark', '格陵兰', '北极', '努克', '丹麦']
 						}}
 						news={$allNewsItems.filter(
 							(n) =>
 								n.title.toLowerCase().includes('greenland') ||
-								n.title.toLowerCase().includes('arctic')
+								n.title.toLowerCase().includes('arctic') ||
+								n.title.includes('格陵兰') ||
+								n.title.includes('北极')
 						)}
 					/>
 				</div>
@@ -371,8 +375,8 @@
 					<SituationPanel
 						panelId="iran"
 						config={{
-							title: 'Iran Crisis',
-							subtitle: 'Revolution protests, regime instability & nuclear program',
+							title: '伊朗危机',
+							subtitle: '革命抗议、政权动荡与核计划',
 							criticalKeywords: [
 								'protest',
 								'uprising',
@@ -383,14 +387,27 @@
 								'strike',
 								'attack',
 								'irgc',
-								'khamenei'
+								'khamenei',
+								'抗议',
+								'起义',
+								'革命',
+								'镇压',
+								'死亡',
+								'核',
+								'打击',
+								'袭击',
+								'伊斯兰革命卫队',
+								'哈梅内伊'
 							]
 						}}
 						news={$allNewsItems.filter(
 							(n) =>
 								n.title.toLowerCase().includes('iran') ||
 								n.title.toLowerCase().includes('tehran') ||
-								n.title.toLowerCase().includes('irgc')
+								n.title.toLowerCase().includes('irgc') ||
+								n.title.includes('伊朗') ||
+								n.title.includes('德黑兰') ||
+								n.title.includes('伊斯兰革命卫队')
 						)}
 					/>
 				</div>

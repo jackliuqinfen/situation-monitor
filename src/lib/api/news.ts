@@ -92,18 +92,18 @@ function transformGdeltArticle(
 export async function fetchCategoryNews(category: NewsCategory): Promise<NewsItem[]> {
 	// Build query from category keywords (GDELT requires OR queries in parentheses)
 	const categoryQueries: Record<NewsCategory, string> = {
-		politics: '(politics OR government OR election OR congress)',
-		tech: '(technology OR software OR startup OR "silicon valley")',
-		finance: '(finance OR "stock market" OR economy OR banking)',
-		gov: '("federal government" OR "white house" OR congress OR regulation)',
-		ai: '("artificial intelligence" OR "machine learning" OR AI OR ChatGPT)',
-		intel: '(intelligence OR security OR military OR defense)'
+		politics: '(politics OR government OR election OR congress OR 政治 OR 政府 OR 选举 OR 国会)',
+		tech: '(technology OR software OR startup OR "silicon valley" OR 科技 OR 软件 OR 创业 OR "硅谷")',
+		finance: '(finance OR "stock market" OR economy OR banking OR 金融 OR 股市 OR 经济 OR 银行)',
+		gov: '("federal government" OR "white house" OR congress OR regulation OR "联邦政府" OR "白宫" OR 国会 OR 监管)',
+		ai: '("artificial intelligence" OR "machine learning" OR AI OR ChatGPT OR "人工智能" OR "机器学习")',
+		intel: '(intelligence OR security OR military OR defense OR 情报 OR 安全 OR 军事 OR 国防)'
 	};
 
 	try {
-		// Add English language filter and timespan for fresh results
+		// Add language filter (English or Chinese)
 		const baseQuery = categoryQueries[category];
-		const fullQuery = `${baseQuery} sourcelang:english`;
+		const fullQuery = `${baseQuery} (sourcelang:english OR sourcelang:zho OR sourcelang:chi)`;
 		// Build the raw GDELT URL with timespan=7d to get recent articles
 		const gdeltUrl = `https://api.gdeltproject.org/api/v2/doc/doc?query=${fullQuery}&timespan=7d&mode=artlist&maxrecords=20&format=json&sort=date`;
 
