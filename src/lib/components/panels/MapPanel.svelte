@@ -40,36 +40,54 @@
 
 	async function initMap() {
 		if (!browser) return;
-		
-		// Dynamic import leaflet to avoid SSR issues
-		const leaflet = await import('leaflet');
-		L = leaflet.default;
-		
-		if (map) map.remove();
 
-		// Initialize map with dark theme options
-		map = L.map(mapContainer, {
-			center: [20, 0],
-			zoom: 2,
-			minZoom: 2,
-			maxZoom: 10,
-			zoomControl: false,
-			attributionControl: false,
-			worldCopyJump: true
-		});
+		try {
+			// Dynamic import leaflet to avoid SSR issues
+			const leaflet = await import('leaflet');
+			L = leaflet.default;
+			
+			if (map) map.remove();
 
-		// CartoDB Dark Matter Tiles (High performance, dark theme, reliable)
-		L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-			subdomains: 'abcd',
-			maxZoom: 20
-		}).addTo(map);
+			// Wait for container to have dimensions
+			if (!mapContainer) return;
+			
+			// Initialize map with dark theme options
+			map = L.map(mapContainer, {
+				center: [20, 0],
+				zoom: 2,
+				minZoom: 2,
+				maxZoom: 10,
+				zoomControl: false,
+				attributionControl: false,
+				worldCopyJump: true
+			});
 
-		// Add custom zoom control to bottom right
-		L.control.zoom({ position: 'bottomright' }).addTo(map);
+			// CartoDB Dark Matter Tiles (High performance, dark theme, reliable)
+			L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+				subdomains: 'abcd',
+				maxZoom: 20
+			}).addTo(map);
 
-		// Add markers and layers
-		addLayers();
+			// Add custom zoom control to bottom right
+			L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+			// Add markers and layers
+			addLayers();
+
+			// Handle resize
+			const resizeObserver = new ResizeObserver(() => {
+				map?.invalidateSize();
+			});
+			resizeObserver.observe(mapContainer);
+			
+			// Cleanup observer on destroy is handled by component destruction naturally clearing refs, 
+			// but explicitly: we could store it. For now, map.remove() cleans up leaflet event listeners.
+			// ResizeObserver will be garbage collected when mapContainer is removed.
+
+		} catch (e) {
+			console.error('Failed to initialize map:', e);
+		}
 	}
 
 	function createCustomIcon(color: string, type: 'dot' | 'pulse' | 'star' | 'square' = 'dot') {
