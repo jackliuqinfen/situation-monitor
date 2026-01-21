@@ -45,18 +45,9 @@
 		const leaflet = await import('leaflet');
 		L = leaflet.default;
 		
-		// Import leaflet CSS
-		if (!document.getElementById('leaflet-css')) {
-			const link = document.createElement('link');
-			link.id = 'leaflet-css';
-			link.rel = 'stylesheet';
-			link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
-			document.head.appendChild(link);
-		}
-
 		if (map) map.remove();
 
-		// Initialize map with Google Satellite Tiles style
+		// Initialize map with dark theme options
 		map = L.map(mapContainer, {
 			center: [20, 0],
 			zoom: 2,
@@ -67,10 +58,11 @@
 			worldCopyJump: true
 		});
 
-		// Google Hybrid Tiles (Satellite + Labels)
-		L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
-			maxZoom: 20,
-			attribution: 'Google'
+		// CartoDB Dark Matter Tiles (High performance, dark theme, reliable)
+		L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+			subdomains: 'abcd',
+			maxZoom: 20
 		}).addTo(map);
 
 		// Add custom zoom control to bottom right
@@ -218,6 +210,10 @@
 		if (map) map.remove();
 	});
 </script>
+
+<svelte:head>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+</svelte:head>
 
 <Panel id="map" title="全球态势 (Google Maps 视图)" {loading} {error}>
 	<div class="map-wrapper">
